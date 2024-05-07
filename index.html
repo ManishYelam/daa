@@ -9,1041 +9,470 @@
 <body>
     <p>
         <pre>
-            <h2>**************************slip1****************************</h2>
-Q.1)	Write a program to sort a list of n numbers in ascending order using selection sort and determine the time required to sort the elements.	[10 Marks]
-import java.util.Arrays;
+            `
+   
+ 
+Assignments 1
 
-public class SelectionSort {
-    public static void selectionSort(int[] arr) {
-        int n = arr.length;
-        for (int i = 0; i < n - 1; i++) {
-            int minIndex = i;
-            for (int j = i + 1; j < n; j++) {
-                if (arr[j] < arr[minIndex]) {
-                    minIndex = j;
-                }
-            }
-            int temp = arr[minIndex];
-            arr[minIndex] = arr[i];
-            arr[i] = temp;
-        }
-    }
+1.	Java Android Program to demonstrate login form with validation. package com.example.pooja;
+import androidx.appcompat.app.AppCompatActivity;
 
-    public static void main(String[] args) {
-        int[] arr = {64, 25, 12, 22, 11};
-        System.out.println("Original Array: " + Arrays.toString(arr));
+import android.os.Bundle; import android.view.View; import android.widget.*;
+public class MainActivity extends AppCompatActivity { Button b1;
+EditText t1,t2; @Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main);
 
-        long startTime = System.nanoTime();
-        selectionSort(arr);
-        long endTime = System.nanoTime();
+b1=(Button)findViewById(R.id.button); t1=(EditText)findViewById(R.id.e1); t2=(EditText)findViewById(R.id.e2);
 
-        long timeElapsed = endTime - startTime;
-        System.out.println("Sorted Array: " + Arrays.toString(arr));
-        System.out.println("Time taken for sorting (nanoseconds): " + timeElapsed);
-    }
+b1.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) {
+if(t1.getText().toString().equals("pooja")&& t2.getText().toString().equals("pathak"))
+{
+Toast.makeText(getApplicationContext(),"Login Done",Toast.LENGTH_SHORT).show();
+}
+else
+{
+Toast.makeText(getApplicationContext(),"Login Incorrect",Toast.LENGTH_SHORT).show();
+}
+}
+});
+}
+}
+ 
+Assignments 2
+2.	Java Android Program to demonstrate Registration form with validation. package com.example.assignment2;
+import androidx.appcompat.app.AppCompatActivity;
+import android.text.TextUtils; import android.util.Patterns; import android.view.View; import android.widget.*; import android.os.Bundle; import java.util.regex.Pattern;
+public class MainActivity extends AppCompatActivity { Button b1;
+EditText e1,e2,e3,e4;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main);
+
+e1=(EditText)findViewById(R.id.editText); e2=(EditText)findViewById(R.id.editText2); e3=(EditText)findViewById(R.id.editText3); e4=(EditText)findViewById(R.id.editText4); b1=(Button)findViewById(R.id.button2);
+
+b1.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v){
+String fn=e1.getText().toString(); String ln=e2.getText().toString(); String con=e3.getText().toString(); String email=e4.getText().toString();
+
+if(fn.isEmpty())
+Toast.makeText(getApplicationContext(),"FN should not be empty",Toast.LENGTH_SHORT).show(); if(ln.isEmpty())
+Toast.makeText(getApplicationContext(),"LN should not be empty",Toast.LENGTH_SHORT).show(); if(con.isEmpty() ||con.length()!=10)
+Toast.makeText(getApplicationContext(),"Contact not valid",Toast.LENGTH_SHORT).show(); if(!isEmp(email))
+Toast.makeText(getApplicationContext(),"Email not valid",Toast.LENGTH_SHORT).show(); else
+
+Toast.makeText(getApplicationContext(),"All values clear",Toast.LENGTH_SHORT).show();
+}
+});
+}
+boolean isEmp(String str)
+{
+CharSequence fn=str.toString();
+return (TextUtils.isEmpty(fn) && Patterns.EMAIL_ADDRESS.matcher(fn).matches());
+}
+}
+ 
+Assignments 3
+
+3.	Create the simple calculator and perform appropriate operation package com.example.assignment3;
+import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle;
+import android.view.View; import android.widget.*;
+
+public class MainActivity extends AppCompatActivity {
+
+Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,bplus,bmin,bmul,bdiv,bdot,bc,bans; EditText edt1;
+char op; float n,ans; @Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main);
+
+b0=(Button)findViewById(R.id.b0); b1=(Button)findViewById(R.id.b1); b2=(Button)findViewById(R.id.b2); b3=(Button)findViewById(R.id.b3); b4=(Button)findViewById(R.id.b4); b5=(Button)findViewById(R.id.b5); b6=(Button)findViewById(R.id.b6); b7=(Button)findViewById(R.id.b7); b8=(Button)findViewById(R.id.b8); b9=(Button)findViewById(R.id.b9); bdot=(Button)findViewById(R.id.bdot); bc=(Button)findViewById(R.id.bc); bplus=(Button)findViewById(R.id.bplus); bmin=(Button)findViewById(R.id.bmin); bmul=(Button)findViewById(R.id.bmul); bdiv=(Button)findViewById(R.id.bdiv); bans=(Button)findViewById(R.id.bans); edt1=(EditText)findViewById(R.id.editText);
+
+b1.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"1");
+}
+});
+b2.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"2");
+}
+});
+b3.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"3");
+ 
+
+});
+ 
 }
 
-Q.2)	Write a program to sort a given set of elements using the Quick sort method and determine the time required to sort the elements. Repeat the experiment for different values of n, the number of elements in the list to be sorted. The elements can be read from a file or can be generated using the random number generator.                                                [15 Marks]
-import java.util.Arrays;
+b4.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"4");
+ 
+}
+});
+b5.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"5");
+}
+});
+b6.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"6");
+}
+});
+b7.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"7");
+}
+});
+b8.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"8");
+}
+});
+b9.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"9");
+}
+});
+b0.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"0");
+}
+});
+bc.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { edt1.setText(" ");
+}
+});
+bdot.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) {
 
-public class QuickSort {
-    public static void quickSort(int[] arr, int low, int high) {
-        if (low < high) {
-            int pivotIndex = partition(arr, low, high);
+}
+});
+ 
+bplus.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { n=Integer.parseInt(edt1.getText().toString()); op='+';
+edt1.setText(" ");
+}
+});
+bmin.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { n=Integer.parseInt(edt1.getText().toString()); op='-';
+edt1.setText(" ");
+}
+});
+bmul.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { n=Integer.parseInt(edt1.getText().toString()); op='*';
+edt1.setText(" ");
+}
+});
+bdiv.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { n=Integer.parseInt(edt1.getText().toString()); op='/';
+edt1.setText(" ");
+}
+});
+bans.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { if(op=='+')
+{
+ans=n+(Float.parseFloat(edt1.getText().toString()));
+}
+if(op=='-')
+{
+ans=n-(Float.parseFloat(edt1.getText().toString()));
+}
+if(op=='*')
+{
+ans=n*(Float.parseFloat(edt1.getText().toString()));
+}
+if(op=='/')
+{
+ans=n/(Float.parseFloat(edt1.getText().toString()));
+}
+ 
 
-            quickSort(arr, low, pivotIndex - 1);
-            quickSort(arr, pivotIndex + 1, high);
-        }
-    }
 
-    public static int partition(int[] arr, int low, int high) {
-        int pivot = arr[high];
-        int i = low - 1;
+});
+}
+}
+ 
+edt1.setText(""+ans);
+}
+ 
+Assignments 4
 
-        for (int j = low; j < high; j++) {
-            if (arr[j] < pivot) {
-                i++;
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-        }
-        
-        int temp = arr[i + 1];
-        arr[i + 1] = arr[high];
-        arr[high] = temp;
+4.	Create an Android application which examine, that a phone number, which a user has entered is in the given format. * Area code should be one of the following: 040, 041, 050, 0400, 044 * There should 6- 8 numbers in telephone number (+ area code).
 
-        return i + 1;
-    }
+package com.example.assignment4;
+import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle;
+import android.widget.*; import android.view.View;
 
-    public static void main(String[] args) {
-        int[] arr = {10, 7, 8, 9, 1, 5};
-        System.out.println("Original Array: " + Arrays.toString(arr));
+public class MainActivity extends AppCompatActivity { Button b1;
+EditText e1,e2; @Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); e1=(EditText)findViewById(R.id.editText); e2=(EditText)findViewById(R.id.editText2); b1=(Button)findViewById(R.id.button);
 
-        long startTime = System.nanoTime();
-        quickSort(arr, 0, arr.length - 1);
-        long endTime = System.nanoTime();
+b1.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { String mpattern="^[0-9]{6}"; String country="^[0-4]{3}";
+if(e1.getText().toString().matches(mpattern) && e2.getText().toString().matches(country))
+{
+Toast.makeText(getApplicationContext(),"Valid Mobile No.",Toast.LENGTH_SHORT).show();
+}
+else
+Toast.makeText(getApplicationContext(),"Invalid Mobile No.",Toast.LENGTH_SHORT).show();
 
-        long timeElapsed = endTime - startTime;
-        System.out.println("Sorted Array: " + Arrays.toString(arr));
-        System.out.println("Time taken for sorting (nanoseconds): " + timeElapsed);
-    }
+}
+});
+
+}
+}
+ 
+Assignments 5
+5.	By using Spinner, Buttons. Write a program to draw GUI. package com.example.assignment5;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle; import android.view.View;
+import android.widget.ArrayAdapter; import android.widget.Button; import android.widget.EditText; import android.widget.Spinner; import java.util.ArrayList;
+import java.util.List;
+public class MainActivity extends AppCompatActivity { Button b1,b2;
+EditText e1; Spinner s1; String name,nn;
+List<String> list1=new ArrayList<String>(); @Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); e1=(EditText)findViewById(R.id.editText); b1=(Button)findViewById(R.id.button); b2=(Button)findViewById(R.id.button2); s1=(Spinner)findViewById(R.id.spinner); b1.setOnClickListener(new View.OnClickListener() {
+@Override
+
+public void onClick(View view) { name=e1.getText().toString(); list1.add(name); ArrayAdapter<String> DA=new
+ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item,list1); DA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); s1.setAdapter(DA);
+DA.notifyDataSetChanged(); e1.setText(" ");
+}
+});
+b2.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View view) { ArrayAdapter<String> DA=new
+ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item,list1); list1.remove(e1.getText().toString());
+DA.notifyDataSetChanged();
+}
+});
+}
+}
+ 
+Assignments 6
+
+6.	Create an Android application, which show to the user 5-10 quiz questions. All questions have 4 possible options and one right option exactly. Application counts and shows to the user how many answers were right and shows the result to user.
+
+package com.example.assignment6;
+
+import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle;
+public class MainActivity extends AppCompatActivity {
+
+@Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main);
+}
+}
+ 
+Assignments 7
+
+7.	Write an application to accept two numbers from the user, and displays them, but reject input if both numbers are greater than 10 and asks for two new numbers.
+
+package com.example.assign12;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle; import android.view.View; import android.widget.Button; import android.widget.EditText; import android.widget.TextView;
+public class MainActivity extends AppCompatActivity { Button b1;
+EditText t1,t2; TextView t3,t4; @Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); b1=(Button)findViewById(R.id.button); t1=(EditText)findViewById(R.id.editText); t2=(EditText)findViewById(R.id.editText2);
+t3=(TextView)findViewById(R.id.textView); t4=(TextView) findViewById(R.id.textView2);
+b1.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View view) {
+int a=Integer.parseInt(t1.getText().toString()); int b=Integer.parseInt(t2.getText().toString()); if(a<10 && b<10) {
+t3.setText("" + a);
+t4.setText("" + b);
+}
+else
+{
+ 
+
+
+
+
+
+}
+});
+ 
+t1.setText("");
+t2.setText("");
+t3.setText("");
+t4.setText("");
+}
+ 
+}
+}
+ 
+Assignments 8
+
+8.	Java Andorid Program to Perform all arithmetic Operations using Calculators package com.example.assignment16;
+import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle;
+import android.view.View; import android.widget.Button; import android.widget.EditText;
+import android.widget.RadioButton; import android.widget.RadioGroup;
+
+public class MainActivity extends AppCompatActivity { Button b1;
+RadioButton r1,r2,r3,r4,r5,r6,r7; RadioGroup rg;
+EditText e1,e2; @Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); e1=(EditText)findViewById(R.id.editText); e2=(EditText)findViewById(R.id.editText2); b1=(Button)findViewById(R.id.button); r1=(RadioButton)findViewById(R.id.radioButton3); r2=(RadioButton)findViewById(R.id.radioButton4); r3=(RadioButton)findViewById(R.id.radioButton2); r4=(RadioButton)findViewById(R.id.radioButton5); r5=(RadioButton)findViewById(R.id.radioButton); r6=(RadioButton)findViewById(R.id.radioButton6); r7=(RadioButton)findViewById(R.id.radioButton7); rg=(RadioGroup)findViewById(R.id.radioGroup); b1.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View view) {
+int n=Integer.parseInt(e1.getText().toString()); if(r1.isChecked())
+{
+if(n%2==0) e2.setText(n+"is even"); else
+e2.setText(n+"is Odd");
+}
+if(r2.isChecked())
+{
+if(n>0)
+e2.setText(n+"is possitive"); else
+e2.setText(n+"is negative");
+}
+if(r3.isChecked())
+{
+e2.setText(""+n*n);
+}
+ 
+if(r4.isChecked())
+{
+int m=1;
+for (int i=1;i<=n;i++)
+{
+m = m * i;
+
+}
+e2.setText("Factorial of"+n+"is"+m);
+}
+if(r5.isChecked())
+{
+int sum=0;
+for(int i=1;i<n;i++)
+{
+if(n%i==0)
+{
+sum=sum+i;
+}
+}
+if(sum==n)
+e2.setText(n+"is perfect"); else
+e2.setText(n+"is not perfect");
+}
+if(r6.isChecked())
+{
+int temp;
+for(int i=2;i<=n/2;i++)
+{
+temp=n%i; if(temp==0)
+e2.setText(n+"is not prime"); else
+e2.setText(n+"is prime");
+}
+}
+if(r7.isChecked())
+{
+int no,temp,total=0; no=n;
+while (no!=0)
+{
+temp=no%10; total=total+temp*temp*temp; no/=10;
+}
+ 
+
+
+
+
+
+}
+});
+}
+}
+ 
+if(total==n)
+e2.setText(n+"is an Armstrong no"); else
+e2.setText(n+"is not Armstrong");
+}
+ 
+Assignments 9
+
+9.	Java Android Program to Change the Image Displayed on the Screen package com.example.assignment17;
+import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle;
+import android.view.View; import android.widget.Button; import android.widget.EditText;
+import android.widget.RadioButton; import android.widget.RadioGroup;
+public class MainActivity extends AppCompatActivity { Button b1;
+RadioGroup rg; RadioButton r1,r2,r3,r4; EditText e1,e2; @Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); b1=(Button)findViewById(R.id.button); e1=(EditText)findViewById(R.id.editText); e2=(EditText)findViewById(R.id.editText2); rg=(RadioGroup)findViewById(R.id.radioGroup); r1=(RadioButton)findViewById(R.id.radioButton); r2=(RadioButton)findViewById(R.id.radioButton2); r3=(RadioButton)findViewById(R.id.radioButton3); r4=(RadioButton)findViewById(R.id.radioButton4); b1.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View view) { String s1=(e1.getText().toString());
+
+String s2=""; if(r1.isChecked())
+{
+s2=s1.toUpperCase(); e2.setText(""+s2);
 }
 
+if(r2.isChecked())
+{
+s2=s1.toLowerCase(); e2.setText(""+s2);
+}
+if(r3.isChecked())
+{
+if(s1.length()>5)
+{
+s2=s1.substring(0,5);
+}
+else s2=s1; e2.setText(s2);
+}
+ 
+if(r4.isChecked())
+{
+if(s1.length()>5)
+{
+s2=s1.substring(s1.length()-5);
+}
+ 
 
 
-<h2>**************************slip2****************************</h2>
-Q.1)	Write a program to sort n randomly generated elements using Heapsort method. [10 Marks]
-import java.util.Arrays;
+}
+}
+});
+}
+}
+ 
+else s2=s1; e2.setText(s2);
+ 
+Assignments 10
 
-public class HeapSort {
-    public static void heapSort(int[] arr) {
-        int n = arr.length;
+10.	Java Android Program to Demonstrate Alert Dialog Box package com.example.assign18;
+import android.app.Activity; import android.os.Bundle; import android.view.Menu; import android.view.View; import android.widget.Button; import android.widget.EditText; import android.widget.TextView;
+import android.view.View.OnClickListener; import android.widget.Toast;
 
-        // Build heap (rearrange array)
-        for (int i = n / 2 - 1; i >= 0; i--) {
-            heapify(arr, n, i);
-        }
+public class MainActivity extends Activity implements OnClickListener { EditText no1,no2;
+Button add,sub,mul,div,eq,c; TextView ans;
+int num1,num2,a; @Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); no1=(EditText) findViewById(R.id.editText1); no2=(EditText)findViewById(R.id.editText3); ans=(TextView)findViewById(R.id.textview3); num1=Integer.parseInt(no1.getText().toString()); num2=Integer.parseInt(no2
+.getText().toString());
 
-        // One by one extract an element from heap
-        for (int i = n - 1; i >= 0; i--) {
-            // Move current root to end
-            int temp = arr[0];
-            arr[0] = arr[i];
-            arr[i] = temp;
-
-            // call max heapify on the reduced heap
-            heapify(arr, i, 0);
-        }
-    }
-
-    public static void heapify(int[] arr, int n, int i) {
-        int largest = i; // Initialize largest as root
-        int left = 2 * i + 1;
-        int right = 2 * i + 2;
-
-        // If left child is larger than root
-        if (left < n && arr[left] > arr[largest]) {
-            largest = left;
-        }
-
-        // If right child is larger than largest so far
-        if (right < n && arr[right] > arr[largest]) {
-            largest = right;
-        }
-
-        // If largest is not root
-        if (largest != i) {
-            int swap = arr[i];
-            arr[i] = arr[largest];
-            arr[largest] = swap;
-
-            // Recursively heapify the affected sub-tree
-            heapify(arr, n, largest);
-        }
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {12, 11, 13, 5, 6, 7};
-        System.out.println("Original Array: " + Arrays.toString(arr));
-
-        heapSort(arr);
-
-        System.out.println("Sorted Array: " + Arrays.toString(arr));
-    }
+add=(Button)findViewById(R.id.badd); sub=(Button)findViewById(R.id.bsub); mul=(Button)findViewById(R.id.bmul); div=(Button)findViewById(R.id.bdiv); eq=(Button)findViewById(R.id.beq); c=(Button)findViewById(R.id.bc); add.setOnClickListener(this); sub.setOnClickListener(this); mul.setOnClickListener(this); div.setOnClickListener(this); eq.setOnClickListener(this); c.setOnClickListener(this);
 }
 
-Q.2)	Write a program to implement Strassen’s Matrix multiplication	[15 Marks]
-public class StrassenMatrixMultiplication {
-    public static int[][] strassenMultiply(int[][] A, int[][] B) {
-        int n = A.length;
-        int[][] result = new int[n][n];
-
-        if (n == 1) {
-            result[0][0] = A[0][0] * B[0][0];
-        } else {
-            int[][] A11 = new int[n/2][n/2];
-            int[][] A12 = new int[n/2][n/2];
-            int[][] A21 = new int[n/2][n/2];
-            int[][] A22 = new int[n/2][n/2];
-            int[][] B11 = new int[n/2][n/2];
-            int[][] B12 = new int[n/2][n/2];
-            int[][] B21 = new int[n/2][n/2];
-            int[][] B22 = new int[n/2][n/2];
-
-            // Splitting matrix A into 4 halves
-            splitMatrix(A, A11, 0 , 0);
-            splitMatrix(A, A12, 0 , n/2);
-            splitMatrix(A, A21, n/2, 0);
-            splitMatrix(A, A22, n/2, n/2);
-
-            // Splitting matrix B into 4 halves
-            splitMatrix(B, B11, 0 , 0);
-            splitMatrix(B, B12, 0 , n/2);
-            splitMatrix(B, B21, n/2, 0);
-            splitMatrix(B, B22, n/2, n/2);
-
-            // Calculating M1 to M7
-            int[][] M1 = strassenMultiply(addMatrices(A11, A22), addMatrices(B11, B22));
-            int[][] M2 = strassenMultiply(addMatrices(A21, A22), B11);
-            int[][] M3 = strassenMultiply(A11, subtractMatrices(B12, B22));
-            int[][] M4 = strassenMultiply(A22, subtractMatrices(B21, B11));
-            int[][] M5 = strassenMultiply(addMatrices(A11, A12), B22);
-            int[][] M6 = strassenMultiply(subtractMatrices(A21, A11), addMatrices(B11, B12));
-            int[][] M7 = strassenMultiply(subtractMatrices(A12, A22), addMatrices(B21, B22));
-
-            // Calculating the result matrix
-            int[][] C11 = addMatrices(subtractMatrices(addMatrices(M1, M4), M5), M7);
-            int[][] C12 = addMatrices(M3, M5);
-            int[][] C21 = addMatrices(M2, M4);
-            int[][] C22 = addMatrices(subtractMatrices(addMatrices(M1, M3), M2), M6);
-
-            // Combining the result matrices
-            joinMatrices(C11, result, 0 , 0);
-            joinMatrices(C12, result, 0 , n/2);
-            joinMatrices(C21, result, n/2, 0);
-            joinMatrices(C22, result, n/2, n/2);
-        }
-
-        return result;
-    }
-
-    public static void splitMatrix(int[][] parent, int[][] child, int startRow, int startCol) {
-        for(int i1 = 0, i2 = startRow; i1 < child.length; i1++, i2++) {
-            for(int j1 = 0, j2 = startCol; j1 < child.length; j1++, j2++) {
-                child[i1][j1] = parent[i2][j2];
-            }
-        }
-    }
-
-    public static void joinMatrices(int[][] child, int[][] parent, int startRow, int startCol) {
-        for(int i1 = 0, i2 = startRow; i1 < child.length; i1++, i2++) {
-            for(int j1 = 0, j2 = startCol; j1 < child.length; j1++, j2++) {
-                parent[i2][j2] = child[i1][j1];
-            }
-        }
-    }
-
-    public static int[][] addMatrices(int[][] A, int[][] B) {
-        int n = A.length;
-        int[][] C = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                C[i][j] = A[i][j] + B[i][j];
-            }
-        }
-        return C;
-    }
-
-    public static int[][] subtractMatrices(int[][] A, int[][] B) {
-        int n = A.length;
-        int[][] C = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                C[i][j] = A[i][j] - B[i][j];
-            }
-        }
-        return C;
-    }
-
-    public static void main(String[] args) {
-        int[][] A = {{1, 2}, {3, 4}};
-        int[][] B = {{5, 6}, {7, 8}};
-
-        int[][] result = strassenMultiply(A, B);
-
-        System.out.println("Result:");
-        for (int[] row : result) {
-            System.out.println(Arrays.toString(row));
-        }
-    }
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+// getMenuInflater().inflate(R.menu.main,menu); return true;
 }
 
-<h2>**************************slip3****************************</h2>
-Q.1)	Write a program to sort a given set of elements using the Quick sort method and determine the time required to sort the elements                                                                       [10 Marks]
-import java.util.Arrays;
-
-public class QuickSort {
-    public static void quickSort(int[] arr, int low, int high) {
-        if (low < high) {
-            int pivotIndex = partition(arr, low, high);
-
-            quickSort(arr, low, pivotIndex - 1);
-            quickSort(arr, pivotIndex + 1, high);
-        }
-    }
-
-    public static int partition(int[] arr, int low, int high) {
-        int pivot = arr[high];
-        int i = low - 1;
-
-        for (int j = low; j < high; j++) {
-            if (arr[j] < pivot) {
-                i++;
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-        }
-
-        int temp = arr[i + 1];
-        arr[i + 1] = arr[high];
-        arr[high] = temp;
-
-        return i + 1;
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {10, 7, 8, 9, 1, 5};
-        System.out.println("Original Array: " + Arrays.toString(arr));
-
-        long startTime = System.nanoTime();
-        quickSort(arr, 0, arr.length - 1);
-        long endTime = System.nanoTime();
-
-        long timeElapsed = endTime - startTime;
-        System.out.println("Sorted Array: " + Arrays.toString(arr));
-        System.out.println("Time taken for sorting (nanoseconds): " + timeElapsed);
-    }
+public void onClick(View v) { float result = 0, num1, num2; Toast var;
+ 
+switch (v.getId()) { case R.id.badd:
+String s1=(String)t1.getText(); num1=Integer.parseInt(s1); t1.setText("");
+var=Toast.makeText(MainActivity.this,"enter other number",Toast.LENGTH_SHORT); var.show();
+s1=(String)t1.getText(); num2=Integer.parseInt(s1); result=num1+num2;
+break;
+case R.id.bsub: num1=Integer.parseInt((String)t1.getText()); t1.setText("");
+var=Toast.makeText(MainActivity.this,"enter other number",Toast.LENGTH_SHORT); var.show();
+s1=(String)t1.getText(); num2=Integer.parseInt(s1); result=num1-num2;
+break;
+case R.id.bmul: num1=Integer.parseInt((String)t1.getText()); t1.setText("");
+var=Toast.makeText(MainActivity.this,"enter other number",Toast.LENGTH_SHORT); var.show();
+s1=(String)t1.getText(); num2=Integer.parseInt(s1); result=num1*num2;
+break;
+case R.id.bdiv: num1=Integer.parseInt((String)t1.getText()); t1.setText("");
+var=Toast.makeText(MainActivity.this,"enter other number",Toast.LENGTH_SHORT); var.show();
+s1=(String)t1.getText(); num2=Integer.parseInt(s1); result=num1/num2;
+break; case R.id.bc:
+t1.setText("");
+t2.setText(""); break;
+case R.id.beq: t3.setText(Float.toString((result))); break;
+}
+}
 }
 
-Q.2)	Write a program to find Minimum Cost Spanning Tree of a given undirected graph using Prims algorithm                                                                                 [15 Marks]
-import java.util.*;
-
-public class PrimsAlgorithm {
-    public static void primsMST(int[][] graph) {
-        int vertices = graph.length;
-        boolean[] visited = new boolean[vertices];
-        int[] parent = new int[vertices];
-        int[] key = new int[vertices];
-
-        Arrays.fill(key, Integer.MAX_VALUE);
-        key[0] = 0; // Start from vertex 0
-
-        for (int count = 0; count < vertices - 1; count++) {
-            int u = minKey(key, visited);
-            visited[u] = true;
-
-            for (int v = 0; v < vertices; v++) {
-                if (graph[u][v] != 0 && !visited[v] && graph[u][v] < key[v]) {
-                    parent[v] = u;
-                    key[v] = graph[u][v];
-                }
-            }
-        }
-
-        // Print the constructed MST
-        printMST(parent, graph);
-    }
-
-    public static int minKey(int[] key, boolean[] visited) {
-        int min = Integer.MAX_VALUE, minIndex = -1;
-        for (int v = 0; v < key.length; v++) {
-            if (!visited[v] && key[v] < min) {
-                min = key[v];
-                minIndex = v;
-            }
-        }
-        return minIndex;
-    }
-
-    public static void printMST(int[] parent, int[][] graph) {
-        System.out.println("Edge \tWeight");
-        for (int i = 1; i < graph.length; i++) {
-            System.out.println(parent[i] + " - " + i + "\t" + graph[i][parent[i]]);
-        }
-    }
-
-    public static void main(String[] args) {
-        int[][] graph = {{0, 2, 0, 6, 0},
-                         {2, 0, 3, 8, 5},
-                         {0, 3, 0, 0, 7},
-                         {6, 8, 0, 0, 9},
-                         {0, 5, 7, 9, 0}};
-
-        primsMST(graph);
-    }
-}
-
-
-<h2>**************************slip4****************************</h2>
-Q.1)	Write a program to implement a Merge Sort algorithm to sort a given set of elements and determine the time required to sort the elements	[10 Marks]
-import java.util.Arrays;
-
-public class MergeSort {
-    public static void mergeSort(int[] arr) {
-        if (arr.length > 1) {
-            int mid = arr.length / 2;
-            int[] left = Arrays.copyOfRange(arr, 0, mid);
-            int[] right = Arrays.copyOfRange(arr, mid, arr.length);
-
-            mergeSort(left);
-            mergeSort(right);
-
-            merge(arr, left, right);
-        }
-    }
-
-    public static void merge(int[] arr, int[] left, int[] right) {
-        int i = 0, j = 0, k = 0;
-
-        while (i < left.length && j < right.length) {
-            if (left[i] <= right[j]) {
-                arr[k++] = left[i++];
-            } else {
-                arr[k++] = right[j++];
-            }
-        }
-
-        while (i < left.length) {
-            arr[k++] = left[i++];
-        }
-
-        while (j < right.length) {
-            arr[k++] = right[j++];
-        }
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {12, 11, 13, 5, 6, 7};
-        System.out.println("Original Array: " + Arrays.toString(arr));
-
-        long startTime = System.nanoTime();
-        mergeSort(arr);
-        long endTime = System.nanoTime();
-
-        long timeElapsed = endTime - startTime;
-        System.out.println("Sorted Array: " + Arrays.toString(arr));
-        System.out.println("Time taken for sorting (nanoseconds): " + timeElapsed);
-    }
-}
-
-Q.2)	Write a program to implement Knapsack problems using Greedy method	[15 Marks]
-import java.util.Arrays;
-
-public class KnapsackGreedy {
-    static class Item implements Comparable<Item> {
-        int weight, value;
-
-        public Item(int weight, int value) {
-            this.weight = weight;
-            this.value = value;
-        }
-
-        public double getValuePerWeight() {
-            return (double) value / weight;
-        }
-
-        @Override
-        public int compareTo(Item other) {
-            double diff = other.getValuePerWeight() - this.getValuePerWeight();
-            return diff > 0 ? 1 : diff < 0 ? -1 : 0;
-        }
-    }
-
-    public static int knapsackGreedy(int[] weights, int[] values, int capacity) {
-        int n = weights.length;
-        Item[] items = new Item[n];
-
-        for (int i = 0; i < n; i++) {
-            items[i] = new Item(weights[i], values[i]);
-        }
-
-        Arrays.sort(items);
-
-        int maxProfit = 0;
-        int currentWeight = 0;
-
-        for (int i = 0; i < n; i++) {
-            if (currentWeight + items[i].weight <= capacity) {
-                currentWeight += items[i].weight;
-                maxProfit += items[i].value;
-            } else {
-                int remainingCapacity = capacity - currentWeight;
-                maxProfit += items[i].getValuePerWeight() * remainingCapacity;
-                break;
-            }
-        }
-
-        return maxProfit;
-    }
-
-    public static void main(String[] args) {
-        int[] weights = {10, 20, 30};
-        int[] values = {60, 100, 120};
-        int capacity = 50;
-
-        int maxProfit = knapsackGreedy(weights, values, capacity);
-        System.out.println("Maximum profit: " + maxProfit);
-    }
-}
-
-
-<h2>**************************slip5****************************</h2>
-Q.1)	Write a program for the Implementation of Kruskal’s algorithm to find minimum cost spanning tree.	[10 Marks]
-import java.util.*;
-
-public class KruskalsAlgorithm {
-    static class Edge implements Comparable<Edge> {
-        int src, dest, weight;
-
-        public Edge(int src, int dest, int weight) {
-            this.src = src;
-            this.dest = dest;
-            this.weight = weight;
-        }
-
-        @Override
-        public int compareTo(Edge other) {
-            return this.weight - other.weight;
-        }
-    }
-
-    public static List<Edge> kruskalsMST(int vertices, List<Edge> edges) {
-        List<Edge> mst = new ArrayList<>();
-        Collections.sort(edges);
-
-        DisjointSet ds = new DisjointSet(vertices);
-
-        for (Edge edge : edges) {
-            int srcParent = ds.find(edge.src);
-            int destParent = ds.find(edge.dest);
-
-            if (srcParent != destParent) {
-                mst.add(edge);
-                ds.union(srcParent, destParent);
-            }
-        }
-
-        return mst;
-    }
-
-    public static void main(String[] args) {
-        int vertices = 4;
-        List<Edge> edges = new ArrayList<>();
-        edges.add(new Edge(0, 1, 10));
-        edges.add(new Edge(0, 2, 6));
-        edges.add(new Edge(0, 3, 5));
-        edges.add(new Edge(1, 3, 15));
-        edges.add(new Edge(2, 3, 4));
-
-        List<Edge> mst = kruskalsMST(vertices, edges);
-        System.out.println("Minimum Spanning Tree Edges:");
-        for (Edge edge : mst) {
-            System.out.println(edge.src + " - " + edge.dest + " : " + edge.weight);
-        }
-    }
-
-    static class DisjointSet {
-        int[] parent, rank;
-
-        public DisjointSet(int n) {
-            parent = new int[n];
-            rank = new int[n];
-            for (int i = 0; i < n; i++) {
-                parent[i] = i;
-            }
-        }
-
-        public int find(int x) {
-            if (parent[x] != x) {
-                parent[x] = find(parent[x]);
-            }
-            return parent[x];
-        }
-
-        public void union(int x, int y) {
-            int xRoot = find(x);
-            int yRoot = find(y);
-
-            if (xRoot == yRoot) return;
-
-            if (rank[xRoot] < rank[yRoot]) {
-                parent[xRoot] = yRoot;
-            } else if (rank[xRoot] > rank[yRoot]) {
-                parent[yRoot] = xRoot;
-            } else {
-                parent[yRoot] = xRoot;
-                rank[xRoot]++;
-            }
-        }
-    }
-}
-
-Q.2)	Write a program to implement Huffman Code using greedy methods and also calculate the best case and worst-case complexity.	[15 Marks]
-import java.util.*;
-
-public class HuffmanCoding {
-    static class HuffmanNode {
-        int data;
-        char c;
-        HuffmanNode left, right;
-
-        HuffmanNode(char c, int data) {
-            this.c = c;
-            this.data = data;
-        }
-    }
-
-    public static void printHuffmanCodes(char[] chars, int[] freq) {
-        PriorityQueue<HuffmanNode> pq = new PriorityQueue<>(Comparator.comparingInt(node -> node.data));
-
-        for (int i = 0; i < chars.length; i++) {
-            pq.offer(new HuffmanNode(chars[i], freq[i]));
-        }
-
-        while (pq.size() > 1) {
-            HuffmanNode x = pq.poll();
-            HuffmanNode y = pq.poll();
-
-            HuffmanNode newNode = new HuffmanNode('$', x.data + y.data);
-            newNode.left = x;
-            newNode.right = y;
-            pq.offer(newNode);
-        }
-
-        printCodes(pq.poll(), "");
-    }
-
-    private static void printCodes(HuffmanNode root, String s) {
-        if (root.left == null && root.right == null && Character.isLetter(root.c)) {
-            System.out.println(root.c + ":" + s);
-            return;
-        }
-
-        printCodes(root.left, s + "0");
-        printCodes(root.right, s + "1");
-    }
-
-    public static void main(String[] args) {
-        char[] chars = {'a', 'b', 'c', 'd', 'e', 'f'};
-        int[] freq = {5, 9, 12, 13, 16, 45};
-
-        System.out.println("Huffman Codes:");
-        printHuffmanCodes(chars, freq);
-    }
-}
-
-<h2>**************************slip6  &  slip7*****************************</h2>
-Q-1) Write a program for the Implementation of Prim’s algorithm to find minimum cost spanning tree.	[10 Marks]
-import java.util.*;
-
-public class PrimsAlgorithm {
-    public static int minKey(int[] key, boolean[] mstSet) {
-        int min = Integer.MAX_VALUE, minIndex = -1;
-        for (int v = 0; v < key.length; v++) {
-            if (!mstSet[v] && key[v] < min) {
-                min = key[v];
-                minIndex = v;
-            }
-        }
-        return minIndex;
-    }
-
-    public static void primMST(int[][] graph) {
-        int V = graph.length;
-        int[] parent = new int[V];
-        int[] key = new int[V];
-        boolean[] mstSet = new boolean[V];
-
-        Arrays.fill(key, Integer.MAX_VALUE);
-        Arrays.fill(mstSet, false);
-
-        key[0] = 0; // Start with vertex 0 as the root
-
-        parent[0] = -1; // Root has no parent
-
-        for (int count = 0; count < V - 1; count++) {
-            int u = minKey(key, mstSet);
-            mstSet[u] = true;
-
-            for (int v = 0; v < V; v++) {
-                if (graph[u][v] != 0 && !mstSet[v] && graph[u][v] < key[v]) {
-                    parent[v] = u;
-                    key[v] = graph[u][v];
-                }
-            }
-        }
-
-        // Print the constructed MST
-        printMST(parent, graph);
-    }
-
-    public static void printMST(int[] parent, int[][] graph) {
-        System.out.println("Edge \tWeight");
-        for (int i = 1; i < graph.length; i++) {
-            System.out.println(parent[i] + " - " + i + "\t" + graph[i][parent[i]]);
-        }
-    }
-
-    public static void main(String[] args) {
-        int[][] graph = {{0, 2, 0, 6, 0},
-                         {2, 0, 3, 8, 5},
-                         {0, 3, 0, 0, 7},
-                         {6, 8, 0, 0, 9},
-                         {0, 5, 7, 9, 0}};
-
-        primMST(graph);
-    }
-}
-
-Q.2)	Write a Program to find only length of Longest Common Subsequence.
-[15 Marks]
-public class LongestCommonSubsequence {
-    public static int longestCommonSubsequenceLength(String X, String Y) {
-        int m = X.length();
-        int n = Y.length();
-
-        int[][] LCS = new int[m + 1][n + 1];
-
-        for (int i = 0; i <= m; i++) {
-            for (int j = 0; j <= n; j++) {
-                if (i == 0 || j == 0) {
-                    LCS[i][j] = 0;
-                } else if (X.charAt(i - 1) == Y.charAt(j - 1)) {
-                    LCS[i][j] = LCS[i - 1][j - 1] + 1;
-                } else {
-                    LCS[i][j] = Math.max(LCS[i - 1][j], LCS[i][j - 1]);
-                }
-            }
-        }
-
-        return LCS[m][n];
-    }
-
-    public static void main(String[] args) {
-        String X = "AGGTAB";
-        String Y = "GXTXAYB";
-
-        System.out.println("Length of Longest Common Subsequence: " + longestCommonSubsequenceLength(X, Y));
-    }
-}
-
-
-
-<h2>**************************slip8*****************************</h2>
-Q-1) Write a program for the Implementation of Dijkstra’s algorithm to find shortest path to other vertices	[10 Marks]
-import java.util.*;
-
-public class DijkstrasAlgorithm {
-    public static void dijkstra(int[][] graph, int src) {
-        int V = graph.length;
-        int[] dist = new int[V];
-        boolean[] sptSet = new boolean[V];
-
-        Arrays.fill(dist, Integer.MAX_VALUE);
-        dist[src] = 0;
-
-        for (int count = 0; count < V - 1; count++) {
-            int u = minDistance(dist, sptSet);
-            sptSet[u] = true;
-
-            for (int v = 0; v < V; v++) {
-                if (!sptSet[v] && graph[u][v] != 0 && dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v]) {
-                    dist[v] = dist[u] + graph[u][v];
-                }
-            }
-        }
-
-        printSolution(dist);
-    }
-
-    public static int minDistance(int[] dist, boolean[] sptSet) {
-        int min = Integer.MAX_VALUE, minIndex = -1;
-        for (int v = 0; v < dist.length; v++) {
-            if (!sptSet[v] && dist[v] <= min) {
-                min = dist[v];
-                minIndex = v;
-            }
-        }
-        return minIndex;
-    }
-
-    public static void printSolution(int[] dist) {
-        System.out.println("Vertex \tDistance from Source");
-        for (int i = 0; i < dist.length; i++) {
-            System.out.println(i + "\t" + dist[i]);
-        }
-    }
-
-    public static void main(String[] args) {
-        int[][] graph = {{0, 4, 0, 0, 0, 0, 0, 8, 0},
-                         {4, 0, 8, 0, 0, 0, 0, 11, 0},
-                         {0, 8, 0, 7, 0, 4, 0, 0, 2},
-                         {0, 0, 7, 0, 9, 14, 0, 0, 0},
-                         {0, 0, 0, 9, 0, 10, 0, 0, 0},
-                         {0, 0, 4, 14, 10, 0, 2, 0, 0},
-                         {0, 0, 0, 0, 0, 2, 0, 1, 6},
-                         {8, 11, 0, 0, 0, 0, 1, 0, 7},
-                         {0, 0, 2, 0, 0, 0, 6, 7, 0}};
-
-        dijkstra(graph, 0);
-    }
-}
-
-Q.2) Write a program for finding Topological sorting for Directed Acyclic Graph (DAG)
-[15 Marks]
-import java.util.*;
-
-public class TopologicalSorting {
-    static class Graph {
-        private final int V;
-        private final List<List<Integer>> adj;
-
-        Graph(int V) {
-            this.V = V;
-            adj = new ArrayList<>(V);
-            for (int i = 0; i < V; i++) {
-                adj.add(new ArrayList<>());
-            }
-        }
-
-        void addEdge(int u, int v) {
-            adj.get(u).add(v);
-        }
-
-        void topologicalSortUtil(int v, boolean[] visited, Stack<Integer> stack) {
-            visited[v] = true;
-
-            for (Integer i : adj.get(v)) {
-                if (!visited[i]) {
-                    topologicalSortUtil(i, visited, stack);
-                }
-            }
-
-            stack.push(v);
-        }
-
-        void topologicalSort() {
-            Stack<Integer> stack = new Stack<>();
-            boolean[] visited = new boolean[V];
-
-            for (int i = 0; i < V; i++) {
-                if (!visited[i]) {
-                    topologicalSortUtil(i, visited, stack);
-                }
-            }
-
-            while (!stack.isEmpty()) {
-                System.out.print(stack.pop() + " ");
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        Graph g = new Graph(6);
-        g.addEdge(5, 2);
-        g.addEdge(5, 0);
-        g.addEdge(4, 0);
-        g.addEdge(4, 1);
-        g.addEdge(2, 3);
-        g.addEdge(3, 1);
-
-        System.out.println("Topological sorting of the given graph is:");
-        g.topologicalSort();
-    }
-}
-
-
-
-<h2>**************************slip9*****************************</h2>
-Q.1)	Write a program to implement Fractional Knapsack problems using Greedy Method
-[10 Marks]
-import java.util.Arrays;
-
-public class KnapsackGreedy {
-    static class Item implements Comparable<Item> {
-        int weight, value;
-
-        public Item(int weight, int value) {
-            this.weight = weight;
-            this.value = value;
-        }
-
-        public double getValuePerWeight() {
-            return (double) value / weight;
-        }
-
-        @Override
-        public int compareTo(Item other) {
-            double diff = other.getValuePerWeight() - this.getValuePerWeight();
-            return diff > 0 ? 1 : diff < 0 ? -1 : 0;
-        }
-    }
-
-    public static int knapsackGreedy(int[] weights, int[] values, int capacity) {
-        int n = weights.length;
-        Item[] items = new Item[n];
-
-        for (int i = 0; i < n; i++) {
-            items[i] = new Item(weights[i], values[i]);
-        }
-
-        Arrays.sort(items);
-
-        int maxProfit = 0;
-        int currentWeight = 0;
-
-        for (int i = 0; i < n; i++) {
-            if (currentWeight + items[i].weight <= capacity) {
-                currentWeight += items[i].weight;
-                maxProfit += items[i].value;
-            } else {
-                int remainingCapacity = capacity - currentWeight;
-                maxProfit += items[i].getValuePerWeight() * remainingCapacity;
-                break;
-            }
-        }
-
-        return maxProfit;
-    }
-
-    public static void main(String[] args) {
-        int[] weights = {10, 20, 30};
-        int[] values = {60, 100, 120};
-        int capacity = 50;
-
-        int maxProfit = knapsackGreedy(weights, values, capacity);
-        System.out.println("Maximum profit: " + maxProfit);
-    }
-}
-
-Q.2)	Write Program to implement Traveling Salesman Problem using nearest neighbor algorithm
-[15 Marks]
-import java.util.*;
-
-public class TravelingSalesmanProblem {
-    public static int[] nearestNeighbor(int[][] graph) {
-        int n = graph.length;
-        int[] tour = new int[n];
-        boolean[] visited = new boolean[n];
-
-        Arrays.fill(visited, false);
-
-        int current = 0;
-        visited[current] = true;
-        tour[0] = current;
-
-        for (int i = 1; i < n; i++) {
-            int nearest = -1;
-            int minDistance = Integer.MAX_VALUE;
-
-            for (int j = 0; j < n; j++) {
-                if (!visited[j] && graph[current][j] < minDistance) {
-                    nearest = j;
-                    minDistance = graph[current][j];
-                }
-            }
-
-            tour[i] = nearest;
-            visited[nearest] = true;
-            current = nearest;
-        }
-
-        return tour;
-    }
-
-    public static void main(String[] args) {
-        int[][] graph = {
-            {0, 10, 15, 20},
-            {10, 0, 35, 25},
-            {15, 35, 0, 30},
-            {20, 25, 30, 0}
-        };
-
-        int[] tour = nearestNeighbor(graph);
-
-        System.out.println("Tour sequence:");
-        for (int city : tour) {
-            System.out.print(city + " ");
-        }
-    }
-}
-
-
-
-<h2>**************************slip10*****************************</h2>
-Q.1)	Write a program to implement optimal binary search tree and also calculate the best-case complexity.            [10 Marks]
-public class OptimalBinarySearchTree {
-    public static int optimalSearchTree(int[] keys, int[] freq, int n) {
-        int[][] cost = new int[n + 1][n + 1];
-
-        for (int i = 0; i < n; i++) {
-            cost[i][i] = freq[i];
-        }
-
-        for (int L = 2; L <= n; L++) {
-            for (int i = 0; i <= n - L + 1; i++) {
-                int j = i + L - 1;
-                cost[i][j] = Integer.MAX_VALUE;
-
-                for (int r = i; r <= j; r++) {
-                    int c = ((r > i) ? cost[i][r - 1] : 0) +
-                            ((r < j) ? cost[r + 1][j] : 0) +
-                            sum(freq, i, j);
-                    if (c < cost[i][j]) {
-                        cost[i][j] = c;
-                    }
-                }
-            }
-        }
-
-        return cost[0][n - 1];
-    }
-
-    public static int sum(int[] freq, int i, int j) {
-        int s = 0;
-        for (int k = i; k <= j; k++) {
-            s += freq[k];
-        }
-        return s;
-    }
-
-    public static void main(String[] args) {
-        int[] keys = {10, 12, 20};
-        int[] freq = {34, 8, 50};
-        int n = keys.length;
-        System.out.println("Optimal Cost: " + optimalSearchTree(keys, freq, n));
-    }
-}
-
-Q.2)	Write a program to implement Sum of Subset by Backtracking                    [15 Marks]
-public class SubsetSum {
-    public static boolean subsetSum(int[] set, int sum) {
-        int n = set.length;
-        return isSubsetSum(set, n, sum);
-    }
-
-    public static boolean isSubsetSum(int[] set, int n, int sum) {
-        if (sum == 0) {
-            return true;
-        }
-        if (n == 0 && sum != 0) {
-            return false;
-        }
-        if (set[n - 1] > sum) {
-            return isSubsetSum(set, n - 1, sum);
-        }
-        return isSubsetSum(set, n - 1, sum) || isSubsetSum(set, n - 1, sum - set[n - 1]);
-    }
-
-    public static void main(String[] args) {
-        int[] set = {3, 34, 4, 12, 5, 2};
-        int sum = 9;
-
-        if (subsetSum(set, sum)) {
-            System.out.println("Subset with given sum exists");
-        } else {
-            System.out.println("Subset with given sum does not exist");
-        }
-    }
-}
-
-
-
-
-
-
+            `
 
 
 
