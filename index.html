@@ -10,467 +10,501 @@
     <p>
         <pre>
             `
+            ***********************************Slip-1****************************************
+Q.1) Create an HTML form for Login and write a JavaScript to validate email ID and Password. [10]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body>
+    <h2>Login Form</h2>
+    <form onsubmit="return validateForm()">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Login">
+    </form>
+    <script>
+        function validateForm() {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var emailValidation = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailValidation.test(email)) {
+                alert('Please enter a valid email address');
+                return false;
+            }
+
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters long');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
+
+Q.2) Using node js create a web page to read two file names from user and append contents of first file into second file. [15]
+const readline = require('readline');
+const fs = require('fs');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+rl.question('Enter the name of the first file: ', (file1) => {
+    rl.question('Enter the name of the second file: ', (file2) => {
+        fs.readFile(file1, 'utf8', (err, data) => {
+            if (err) throw err;
+            fs.appendFile(file2, data, (err) => {
+                if (err) throw err;
+                console.log(`${file1} appended to ${file2}`);
+                rl.close();
+            });
+        });
+    });
+});
+
+
+
+*****************************Slip-2***************************************************************
+Q.1) Create a Node.js file that will convert the output "Full Stack!" into reverse string. [10]
+const str = "Full Stack!";
+const reversedStr = str.split('').reverse().join('');
+console.log(reversedStr);
+
+Q.2) Create an HTML form that contain the Student Registration details and write a JavaScript to validate Student first and last name as it should not contain other than 
+alphabets and age should be between 18 to 50. [15] 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+</head>
+<body>
+    <h2>Student Registration</h2>
+    <form onsubmit="return validateForm()">
+        <label for="firstName">First Name:</label><br>
+        <input type="text" id="firstName" name="firstName" required><br><br>
+        <label for="lastName">Last Name:</label><br>
+        <input type="text" id="lastName" name="lastName" required><br><br>
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age" required><br><br>
+        <input type="submit" value="Register">
+    </form>
+    <script>
+        function validateForm() {
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var age = document.getElementById('age').value;
+
+            var nameRegex = /^[A-Za-z]+$/;
+
+            if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
+                alert('First and last name should only contain alphabets');
+                return false;
+            }
+
+            if (age < 18 || age > 50) {
+                alert('Age should be between 18 to 50');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
+
+
+***************************Slip-3   &    Slip7************************************************
+Q.1) Create a Simple Web Server using node js. [10]
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello World!\n');
+});
+
+const PORT = 3000;
+server.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}/`);
+});
+
+Q.2) Create an HTML form that contain the Employee Registration details and write
+ a JavaScript to validate DOB, Joining Date, and Salary. [15] 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration</title>
+</head>
+<body>
+    <h2>Employee Registration</h2>
+    <form onsubmit="return validateForm()">
+        <label for="dob">Date of Birth:</label><br>
+        <input type="date" id="dob" name="dob" required><br><br>
+        <label for="joiningDate">Joining Date:</label><br>
+        <input type="date" id="joiningDate" name="joiningDate" required><br><br>
+        <label for="salary">Salary:</label><br>
+        <input type="number" id="salary" name="salary" required><br><br>
+        <input type="submit" value="Register">
+    </form>
+    <script>
+        function validateForm() {
+            var dob = document.getElementById('dob').value;
+            var joiningDate = document.getElementById('joiningDate').value;
+            var salary = document.getElementById('salary').value;
+
+            // You can implement validation for date format and salary range as required
+
+            return true;
+        }
+    </script>
+</body>
+</html>
+
+
+***************************************Slip-4******************************************************************
+Q.1) Create a Node.js file that will convert the output "Full Stack!" into reverse string. [10]
+const str = "Full Stack!";
+const reversedStr = str.split('').reverse().join('');
+console.log(reversedStr);
+
+Q.2) Using node js create a web page to read two file names from user and append contents of first file into second file.  [15] 
+const readline = require('readline');
+const fs = require('fs');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+rl.question('Enter the name of the first file: ', (file1) => {
+    rl.question('Enter the name of the second file: ', (file2) => {
+        fs.readFile(file1, 'utf8', (err, data) => {
+            if (err) throw err;
+            fs.appendFile(file2, data, (err) => {
+                if (err) throw err;
+                console.log(`${file1} appended to ${file2}`);
+                rl.close();
+            });
+        });
+    });
+});
+
+
+*************************************Slip-5*************************************************************
+Q.1) Create a Node.js file that writes an HTML form, with an upload field. [10] 
+const fs = require('fs');
+
+const htmlForm = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Form</title>
+</head>
+<body>
+    <h2>Upload File</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>
+`;
+
+fs.writeFileSync('uploadForm.html', htmlForm);
+console.log('HTML form with upload field created!');
+
+Q.2) Create an HTML form for Student Feedback Form with Name, Email ID,  Mobile No., feedback (Not good, good, very good, excellent) and write a 
+ JavaScript to validate all field.   [15]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback Form</title>
+</head>
+<body>
+    <h2>Student Feedback Form</h2>
+    <form onsubmit="return validateForm()">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="mobile">Mobile No.:</label><br>
+        <input type="text" id="mobile" name="mobile" maxlength="10" required><br><br>
+        <label for="feedback">Feedback:</label><br>
+        <select id="feedback" name="feedback" required>
+            <option value="">Select</option>
+            <option value="Not good">Not good</option>
+            <option value="Good">Good</option>
+            <option value="Very good">Very good</option>
+            <option value="Excellent">Excellent</option>
+        </select><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var mobile = document.getElementById('mobile').value;
+            var feedback = document.getElementById('feedback').value;
+
+            var nameRegex = /^[A-Za-z]+$/;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var mobileRegex = /^[0-9]{10}$/;
+
+            if (!nameRegex.test(name)) {
+                alert('Please enter a valid name');
+                return false;
+            }
+
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return false;
+            }
+
+            if (!mobileRegex.test(mobile)) {
+                alert('Please enter a valid 10-digit mobile number');
+                return false;
+            }
+
+            if (feedback === "") {
+                alert('Please provide feedback');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
+
+****************Slip-6   &    slip10************************************************************************
+
+Q.1) Create a Node.js file that will convert the output "rbnb college!" into Upper-case letters.      [10] 
+const str = "rbnb college!";
+const upperCaseStr = str.toUpperCase();
+console.log(upperCaseStr);
+
+Q.2) Create an HTML form for Employee and write a JavaScript to validate name, email ID, 
+mobile number, department, joining date. [15] 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration</title>
+</head>
+<body>
+    <h2>Employee Registration</h2>
+    <form onsubmit="return validateForm()">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="mobile">Mobile No.:</label><br>
+        <input type="text" id="mobile" name="mobile" maxlength="10" required><br><br>
+        <label for="department">Department:</label><br>
+        <input type="text" id="department" name="department" required><br><br>
+        <label for="joiningDate">Joining Date:</label><br>
+        <input type="date" id="joiningDate" name="joiningDate" required><br><br>
+        <input type="submit" value="Register">
+    </form>
+     <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var mobile = document.getElementById('mobile').value;
+            var department = document.getElementById('department').value;
+            var joiningDate = document.getElementById('joiningDate').value;
+
+            var nameRegex = /^[A-Za-z]+$/;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var mobileRegex = /^[0-9]{10}$/;
+            // You can add validation for department and joining date format as required
+
+            if (!nameRegex.test(name)) {
+                alert('Please enter a valid name');
+                return false;
+            }
+
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return false;
+            }
+
+            if (!mobileRegex.test(mobile)) {
+                alert('Please enter a valid 10-digit mobile number');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
+
+
+****************************************Slip-8*****************************************************
+Q.1) Create a Node.js file that will convert the output "HELLO WORLD!" into lower-case 
+letters. [10]
+const str = "HELLO WORLD!";
+const lowerCaseStr = str.toLowerCase();
+console.log(lowerCaseStr);
+ 
+Q.2) Create an HTML form that contain the Student Registration details and write a JavaScript to 
+validate Student first and last name as it should not contain other than alphabets and age should be between 18 to 50. [15] 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+</head>
+<body>
+    <h2>Student Registration</h2>
+    <form onsubmit="return validateForm()">
+        <label for="firstName">First Name:</label><br>
+        <input type="text" id="firstName" name="firstName" required><br><br>
+        <label for="lastName">Last Name:</label><br>
+        <input type="text" id="lastName" name="lastName" required><br><br>
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age" required><br><br>
+        <input type="submit" value="Register">
+    </form>
+    <script>
+        function validateForm() {
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var age = document.getElementById('age').value;
+
+            var nameRegex = /^[A-Za-z]+$/;
+
+            if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
+                alert('First and last name should only contain alphabets');
+                return false;
+            }
+
+            if (age < 18 || age > 50) {
+                alert('Age should be between 18 to 50');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
+
+
+*****************************************Slip-9*********************************************
+Q.1) Create a Node.js file that writes an HTML form, with a concatenate two string. [10] 
+const fs = require('fs');
+const htmlForm = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concatenate Strings Form</title>
+</head>
+<body>
+    <h2>Concatenate Strings</h2>
+    <form action="/concatenate" method="post">
+        <label for="string1">String 1:</label><br>
+        <input type="text" id="string1" name="string1" required><br><br>
+        <label for="string2">String 2:</label><br>
+        <input type="text" id="string2" name="string2" required><br><br>
+        <input type="submit" value="Concatenate">
+    </form>
+</body>
+</html>
+`;
+fs.writeFileSync('concatenateForm.html', htmlForm);
+console.log('HTML form for concatenating strings created!');
+
+Q.2) Create an HTML form for Student Feedback Form with Name, Email ID, Mobile No., 
+feedback (Not good, good, very good, excellent) and write a JavaScript to validate all field. [15]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback Form</title>
+</head>
+<body>
+    <h2>Student Feedback Form</h2>
+    <form onsubmit="return validateForm()">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="mobile">Mobile No.:</label><br>
+        <input type="text" id="mobile" name="mobile" maxlength="10" required><br><br>
+        <label for="feedback">Feedback:</label><br>
+        <select id="feedback" name="feedback" required>
+            <option value="">Select</option>
+            <option value="Not good">Not good</option>
+            <option value="Good">Good</option>
+            <option value="Very good">Very good</option>
+            <option value="Excellent">Excellent</option>
+        </select><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var mobile = document.getElementById('mobile').value;
+            var feedback = document.getElementById('feedback').value;
+
+            var namevalid = /^[A-Za-z]+$/;
+            var emailvalid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var mobilevalid = /^[0-9]{10}$/;
+
+            if (!namevalid.test(name)) {
+                alert('Please enter a valid name');
+                return false;
+            }
+
+            if (!emailvalid.test(email)) {
+                alert('Please enter a valid email address');
+                return false;
+            }
+
+            if (!mobilevalid.test(mobile)) {
+                alert('Please enter a valid 10-digit mobile number');
+                return false;
+            }
+
+            if (feedback === "") {
+                alert('Please provide feedback');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
+
+
+
+
    
  
-Assignments 1
-
-1.	Java Android Program to demonstrate login form with validation. package com.example.pooja;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle; import android.view.View; import android.widget.*;
-public class MainActivity extends AppCompatActivity { Button b1;
-EditText t1,t2; @Override
-protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main);
-
-b1=(Button)findViewById(R.id.button); t1=(EditText)findViewById(R.id.e1); t2=(EditText)findViewById(R.id.e2);
-
-b1.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) {
-if(t1.getText().toString().equals("pooja")&& t2.getText().toString().equals("pathak"))
-{
-Toast.makeText(getApplicationContext(),"Login Done",Toast.LENGTH_SHORT).show();
-}
-else
-{
-Toast.makeText(getApplicationContext(),"Login Incorrect",Toast.LENGTH_SHORT).show();
-}
-}
-});
-}
-}
- 
-Assignments 2
-2.	Java Android Program to demonstrate Registration form with validation. package com.example.assignment2;
-import androidx.appcompat.app.AppCompatActivity;
-import android.text.TextUtils; import android.util.Patterns; import android.view.View; import android.widget.*; import android.os.Bundle; import java.util.regex.Pattern;
-public class MainActivity extends AppCompatActivity { Button b1;
-EditText e1,e2,e3,e4;
-
-@Override
-protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main);
-
-e1=(EditText)findViewById(R.id.editText); e2=(EditText)findViewById(R.id.editText2); e3=(EditText)findViewById(R.id.editText3); e4=(EditText)findViewById(R.id.editText4); b1=(Button)findViewById(R.id.button2);
-
-b1.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v){
-String fn=e1.getText().toString(); String ln=e2.getText().toString(); String con=e3.getText().toString(); String email=e4.getText().toString();
-
-if(fn.isEmpty())
-Toast.makeText(getApplicationContext(),"FN should not be empty",Toast.LENGTH_SHORT).show(); if(ln.isEmpty())
-Toast.makeText(getApplicationContext(),"LN should not be empty",Toast.LENGTH_SHORT).show(); if(con.isEmpty() ||con.length()!=10)
-Toast.makeText(getApplicationContext(),"Contact not valid",Toast.LENGTH_SHORT).show(); if(!isEmp(email))
-Toast.makeText(getApplicationContext(),"Email not valid",Toast.LENGTH_SHORT).show(); else
-
-Toast.makeText(getApplicationContext(),"All values clear",Toast.LENGTH_SHORT).show();
-}
-});
-}
-boolean isEmp(String str)
-{
-CharSequence fn=str.toString();
-return (TextUtils.isEmpty(fn) && Patterns.EMAIL_ADDRESS.matcher(fn).matches());
-}
-}
- 
-Assignments 3
-
-3.	Create the simple calculator and perform appropriate operation package com.example.assignment3;
-import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle;
-import android.view.View; import android.widget.*;
-
-public class MainActivity extends AppCompatActivity {
-
-Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,bplus,bmin,bmul,bdiv,bdot,bc,bans; EditText edt1;
-char op; float n,ans; @Override
-protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main);
-
-b0=(Button)findViewById(R.id.b0); b1=(Button)findViewById(R.id.b1); b2=(Button)findViewById(R.id.b2); b3=(Button)findViewById(R.id.b3); b4=(Button)findViewById(R.id.b4); b5=(Button)findViewById(R.id.b5); b6=(Button)findViewById(R.id.b6); b7=(Button)findViewById(R.id.b7); b8=(Button)findViewById(R.id.b8); b9=(Button)findViewById(R.id.b9); bdot=(Button)findViewById(R.id.bdot); bc=(Button)findViewById(R.id.bc); bplus=(Button)findViewById(R.id.bplus); bmin=(Button)findViewById(R.id.bmin); bmul=(Button)findViewById(R.id.bmul); bdiv=(Button)findViewById(R.id.bdiv); bans=(Button)findViewById(R.id.bans); edt1=(EditText)findViewById(R.id.editText);
-
-b1.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"1");
-}
-});
-b2.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"2");
-}
-});
-b3.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"3");
- 
-
-});
- 
-}
-
-b4.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"4");
- 
-}
-});
-b5.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"5");
-}
-});
-b6.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"6");
-}
-});
-b7.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"7");
-}
-});
-b8.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"8");
-}
-});
-b9.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"9");
-}
-});
-b0.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) { edt1.setText(""+edt1.getText().toString()+"0");
-}
-});
-bc.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) { edt1.setText(" ");
-}
-});
-bdot.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) {
-
-}
-});
- 
-bplus.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) { n=Integer.parseInt(edt1.getText().toString()); op='+';
-edt1.setText(" ");
-}
-});
-bmin.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) { n=Integer.parseInt(edt1.getText().toString()); op='-';
-edt1.setText(" ");
-}
-});
-bmul.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) { n=Integer.parseInt(edt1.getText().toString()); op='*';
-edt1.setText(" ");
-}
-});
-bdiv.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) { n=Integer.parseInt(edt1.getText().toString()); op='/';
-edt1.setText(" ");
-}
-});
-bans.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) { if(op=='+')
-{
-ans=n+(Float.parseFloat(edt1.getText().toString()));
-}
-if(op=='-')
-{
-ans=n-(Float.parseFloat(edt1.getText().toString()));
-}
-if(op=='*')
-{
-ans=n*(Float.parseFloat(edt1.getText().toString()));
-}
-if(op=='/')
-{
-ans=n/(Float.parseFloat(edt1.getText().toString()));
-}
- 
-
-
-});
-}
-}
- 
-edt1.setText(""+ans);
-}
- 
-Assignments 4
-
-4.	Create an Android application which examine, that a phone number, which a user has entered is in the given format. * Area code should be one of the following: 040, 041, 050, 0400, 044 * There should 6- 8 numbers in telephone number (+ area code).
-
-package com.example.assignment4;
-import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle;
-import android.widget.*; import android.view.View;
-
-public class MainActivity extends AppCompatActivity { Button b1;
-EditText e1,e2; @Override
-protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); e1=(EditText)findViewById(R.id.editText); e2=(EditText)findViewById(R.id.editText2); b1=(Button)findViewById(R.id.button);
-
-b1.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View v) { String mpattern="^[0-9]{6}"; String country="^[0-4]{3}";
-if(e1.getText().toString().matches(mpattern) && e2.getText().toString().matches(country))
-{
-Toast.makeText(getApplicationContext(),"Valid Mobile No.",Toast.LENGTH_SHORT).show();
-}
-else
-Toast.makeText(getApplicationContext(),"Invalid Mobile No.",Toast.LENGTH_SHORT).show();
-
-}
-});
-
-}
-}
- 
-Assignments 5
-5.	By using Spinner, Buttons. Write a program to draw GUI. package com.example.assignment5;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle; import android.view.View;
-import android.widget.ArrayAdapter; import android.widget.Button; import android.widget.EditText; import android.widget.Spinner; import java.util.ArrayList;
-import java.util.List;
-public class MainActivity extends AppCompatActivity { Button b1,b2;
-EditText e1; Spinner s1; String name,nn;
-List<String> list1=new ArrayList<String>(); @Override
-protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); e1=(EditText)findViewById(R.id.editText); b1=(Button)findViewById(R.id.button); b2=(Button)findViewById(R.id.button2); s1=(Spinner)findViewById(R.id.spinner); b1.setOnClickListener(new View.OnClickListener() {
-@Override
-
-public void onClick(View view) { name=e1.getText().toString(); list1.add(name); ArrayAdapter<String> DA=new
-ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item,list1); DA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); s1.setAdapter(DA);
-DA.notifyDataSetChanged(); e1.setText(" ");
-}
-});
-b2.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View view) { ArrayAdapter<String> DA=new
-ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item,list1); list1.remove(e1.getText().toString());
-DA.notifyDataSetChanged();
-}
-});
-}
-}
- 
-Assignments 6
-
-6.	Create an Android application, which show to the user 5-10 quiz questions. All questions have 4 possible options and one right option exactly. Application counts and shows to the user how many answers were right and shows the result to user.
-
-package com.example.assignment6;
-
-import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle;
-public class MainActivity extends AppCompatActivity {
-
-@Override
-protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main);
-}
-}
- 
-Assignments 7
-
-7.	Write an application to accept two numbers from the user, and displays them, but reject input if both numbers are greater than 10 and asks for two new numbers.
-
-package com.example.assign12;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle; import android.view.View; import android.widget.Button; import android.widget.EditText; import android.widget.TextView;
-public class MainActivity extends AppCompatActivity { Button b1;
-EditText t1,t2; TextView t3,t4; @Override
-protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); b1=(Button)findViewById(R.id.button); t1=(EditText)findViewById(R.id.editText); t2=(EditText)findViewById(R.id.editText2);
-t3=(TextView)findViewById(R.id.textView); t4=(TextView) findViewById(R.id.textView2);
-b1.setOnClickListener(new View.OnClickListener() { @Override
-public void onClick(View view) {
-int a=Integer.parseInt(t1.getText().toString()); int b=Integer.parseInt(t2.getText().toString()); if(a<10 && b<10) {
-t3.setText("" + a);
-t4.setText("" + b);
-}
-else
-{
- 
-
-
-
-
-
-}
-});
- 
-t1.setText("");
-t2.setText("");
-t3.setText("");
-t4.setText("");
-}
- 
-}
-}
- 
-Assignments 8
-
-8.	Java Andorid Program to Perform all arithmetic Operations using Calculators package com.example.assignment16;
-import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle;
-import android.view.View; import android.widget.Button; import android.widget.EditText;
-import android.widget.RadioButton; import android.widget.RadioGroup;
-
-public class MainActivity extends AppCompatActivity { Button b1;
-RadioButton r1,r2,r3,r4,r5,r6,r7; RadioGroup rg;
-EditText e1,e2; @Override
-protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); e1=(EditText)findViewById(R.id.editText); e2=(EditText)findViewById(R.id.editText2); b1=(Button)findViewById(R.id.button); r1=(RadioButton)findViewById(R.id.radioButton3); r2=(RadioButton)findViewById(R.id.radioButton4); r3=(RadioButton)findViewById(R.id.radioButton2); r4=(RadioButton)findViewById(R.id.radioButton5); r5=(RadioButton)findViewById(R.id.radioButton); r6=(RadioButton)findViewById(R.id.radioButton6); r7=(RadioButton)findViewById(R.id.radioButton7); rg=(RadioGroup)findViewById(R.id.radioGroup); b1.setOnClickListener(new View.OnClickListener() {
-@Override
-public void onClick(View view) {
-int n=Integer.parseInt(e1.getText().toString()); if(r1.isChecked())
-{
-if(n%2==0) e2.setText(n+"is even"); else
-e2.setText(n+"is Odd");
-}
-if(r2.isChecked())
-{
-if(n>0)
-e2.setText(n+"is possitive"); else
-e2.setText(n+"is negative");
-}
-if(r3.isChecked())
-{
-e2.setText(""+n*n);
-}
- 
-if(r4.isChecked())
-{
-int m=1;
-for (int i=1;i<=n;i++)
-{
-m = m * i;
-
-}
-e2.setText("Factorial of"+n+"is"+m);
-}
-if(r5.isChecked())
-{
-int sum=0;
-for(int i=1;i<n;i++)
-{
-if(n%i==0)
-{
-sum=sum+i;
-}
-}
-if(sum==n)
-e2.setText(n+"is perfect"); else
-e2.setText(n+"is not perfect");
-}
-if(r6.isChecked())
-{
-int temp;
-for(int i=2;i<=n/2;i++)
-{
-temp=n%i; if(temp==0)
-e2.setText(n+"is not prime"); else
-e2.setText(n+"is prime");
-}
-}
-if(r7.isChecked())
-{
-int no,temp,total=0; no=n;
-while (no!=0)
-{
-temp=no%10; total=total+temp*temp*temp; no/=10;
-}
- 
-
-
-
-
-
-}
-});
-}
-}
- 
-if(total==n)
-e2.setText(n+"is an Armstrong no"); else
-e2.setText(n+"is not Armstrong");
-}
- 
-Assignments 9
-
-9.	Java Android Program to Change the Image Displayed on the Screen package com.example.assignment17;
-import androidx.appcompat.app.AppCompatActivity; import android.os.Bundle;
-import android.view.View; import android.widget.Button; import android.widget.EditText;
-import android.widget.RadioButton; import android.widget.RadioGroup;
-public class MainActivity extends AppCompatActivity { Button b1;
-RadioGroup rg; RadioButton r1,r2,r3,r4; EditText e1,e2; @Override
-protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); b1=(Button)findViewById(R.id.button); e1=(EditText)findViewById(R.id.editText); e2=(EditText)findViewById(R.id.editText2); rg=(RadioGroup)findViewById(R.id.radioGroup); r1=(RadioButton)findViewById(R.id.radioButton); r2=(RadioButton)findViewById(R.id.radioButton2); r3=(RadioButton)findViewById(R.id.radioButton3); r4=(RadioButton)findViewById(R.id.radioButton4); b1.setOnClickListener(new View.OnClickListener() {
-@Override
-public void onClick(View view) { String s1=(e1.getText().toString());
-
-String s2=""; if(r1.isChecked())
-{
-s2=s1.toUpperCase(); e2.setText(""+s2);
-}
-
-if(r2.isChecked())
-{
-s2=s1.toLowerCase(); e2.setText(""+s2);
-}
-if(r3.isChecked())
-{
-if(s1.length()>5)
-{
-s2=s1.substring(0,5);
-}
-else s2=s1; e2.setText(s2);
-}
- 
-if(r4.isChecked())
-{
-if(s1.length()>5)
-{
-s2=s1.substring(s1.length()-5);
-}
- 
-
-
-}
-}
-});
-}
-}
- 
-else s2=s1; e2.setText(s2);
- 
-Assignments 10
-
-10.	Java Android Program to Demonstrate Alert Dialog Box package com.example.assign18;
-import android.app.Activity; import android.os.Bundle; import android.view.Menu; import android.view.View; import android.widget.Button; import android.widget.EditText; import android.widget.TextView;
-import android.view.View.OnClickListener; import android.widget.Toast;
-
-public class MainActivity extends Activity implements OnClickListener { EditText no1,no2;
-Button add,sub,mul,div,eq,c; TextView ans;
-int num1,num2,a; @Override
-protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); no1=(EditText) findViewById(R.id.editText1); no2=(EditText)findViewById(R.id.editText3); ans=(TextView)findViewById(R.id.textview3); num1=Integer.parseInt(no1.getText().toString()); num2=Integer.parseInt(no2
-.getText().toString());
-
-add=(Button)findViewById(R.id.badd); sub=(Button)findViewById(R.id.bsub); mul=(Button)findViewById(R.id.bmul); div=(Button)findViewById(R.id.bdiv); eq=(Button)findViewById(R.id.beq); c=(Button)findViewById(R.id.bc); add.setOnClickListener(this); sub.setOnClickListener(this); mul.setOnClickListener(this); div.setOnClickListener(this); eq.setOnClickListener(this); c.setOnClickListener(this);
-}
-
-@Override
-public boolean onCreateOptionsMenu(Menu menu) {
-// getMenuInflater().inflate(R.menu.main,menu); return true;
-}
-
-public void onClick(View v) { float result = 0, num1, num2; Toast var;
- 
-switch (v.getId()) { case R.id.badd:
-String s1=(String)t1.getText(); num1=Integer.parseInt(s1); t1.setText("");
-var=Toast.makeText(MainActivity.this,"enter other number",Toast.LENGTH_SHORT); var.show();
-s1=(String)t1.getText(); num2=Integer.parseInt(s1); result=num1+num2;
-break;
-case R.id.bsub: num1=Integer.parseInt((String)t1.getText()); t1.setText("");
-var=Toast.makeText(MainActivity.this,"enter other number",Toast.LENGTH_SHORT); var.show();
-s1=(String)t1.getText(); num2=Integer.parseInt(s1); result=num1-num2;
-break;
-case R.id.bmul: num1=Integer.parseInt((String)t1.getText()); t1.setText("");
-var=Toast.makeText(MainActivity.this,"enter other number",Toast.LENGTH_SHORT); var.show();
-s1=(String)t1.getText(); num2=Integer.parseInt(s1); result=num1*num2;
-break;
-case R.id.bdiv: num1=Integer.parseInt((String)t1.getText()); t1.setText("");
-var=Toast.makeText(MainActivity.this,"enter other number",Toast.LENGTH_SHORT); var.show();
-s1=(String)t1.getText(); num2=Integer.parseInt(s1); result=num1/num2;
-break; case R.id.bc:
-t1.setText("");
-t2.setText(""); break;
-case R.id.beq: t3.setText(Float.toString((result))); break;
-}
-}
-}
 
             `
 
