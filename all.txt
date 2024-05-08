@@ -114,17 +114,12 @@ alphabets and age should be between 18 to 50. [15]
 
 ***************************Slip-3   &    Slip7************************************************
 Q.1) Create a Simple Web Server using node js. [10]
-const http = require('http');
+var http = require('http');
 
-const server = http.createServer((req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello World!\n');
-});
-
-const PORT = 3000;
-server.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}/`);
-});
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World!');
+}).listen(8080);
 
 Q.2) Create an HTML form that contain the Employee Registration details and write
  a JavaScript to validate DOB, Joining Date, and Salary. [15] 
