@@ -1,0 +1,61 @@
+
+            ***********************************Slip-1****************************************
+Q.1) Create an HTML form for Login and write a JavaScript to validate email ID and Password. [10]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body>
+    <h2>Login Form</h2>
+    <form onsubmit="return validateForm()">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Login">
+    </form>
+    <script>
+        function validateForm() {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var emailValidation = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailValidation.test(email)) {
+                alert('Please enter a valid email address');
+                return false;
+            }
+
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters long');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
+
+Q.2) Using node js create a web page to read two file names from user and append contents of first file into second file. [15]
+const readline = require('readline');
+const fs = require('fs');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+rl.question('Enter the name of the first file: ', (file1) => {
+    rl.question('Enter the name of the second file: ', (file2) => {
+        fs.readFile(file1, 'utf8', (err, data) => {
+            if (err) throw err;
+            fs.appendFile(file2, data, (err) => {
+                if (err) throw err;
+                console.log(`${file1} appended to ${file2}`);
+                rl.close();
+            });
+        });
+    });
+});
+

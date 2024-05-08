@@ -1,0 +1,51 @@
+****************************************Slip-8*****************************************************
+Q.1) Create a Node.js file that will convert the output "HELLO WORLD!" into lower-case 
+letters. [10]
+const str = "HELLO WORLD!";
+const lowerCaseStr = str.toLowerCase();
+console.log(lowerCaseStr);
+ 
+Q.2) Create an HTML form that contain the Student Registration details and write a JavaScript to 
+validate Student first and last name as it should not contain other than alphabets and age should be between 18 to 50. [15] 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+</head>
+<body>
+    <h2>Student Registration</h2>
+    <form onsubmit="return validateForm()">
+        <label for="firstName">First Name:</label><br>
+        <input type="text" id="firstName" name="firstName" required><br><br>
+        <label for="lastName">Last Name:</label><br>
+        <input type="text" id="lastName" name="lastName" required><br><br>
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age" required><br><br>
+        <input type="submit" value="Register">
+    </form>
+    <script>
+        function validateForm() {
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var age = document.getElementById('age').value;
+
+            var nameRegex = /^[A-Za-z]+$/;
+
+            if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
+                alert('First and last name should only contain alphabets');
+                return false;
+            }
+
+            if (age < 18 || age > 50) {
+                alert('Age should be between 18 to 50');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+***************************Slip-3   &    Slip7************************************************
+Q.1) Create a Simple Web Server using node js. [10]
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello World!\n');
+});
+
+const PORT = 3000;
+server.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}/`);
+});
+
+Q.2) Create an HTML form that contain the Employee Registration details and write
+ a JavaScript to validate DOB, Joining Date, and Salary. [15] 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration</title>
+</head>
+<body>
+    <h2>Employee Registration</h2>
+    <form onsubmit="return validateForm()">
+        <label for="dob">Date of Birth:</label><br>
+        <input type="date" id="dob" name="dob" required><br><br>
+        <label for="joiningDate">Joining Date:</label><br>
+        <input type="date" id="joiningDate" name="joiningDate" required><br><br>
+        <label for="salary">Salary:</label><br>
+        <input type="number" id="salary" name="salary" required><br><br>
+        <input type="submit" value="Register">
+    </form>
+    <script>
+        function validateForm() {
+            var dob = document.getElementById('dob').value;
+            var joiningDate = document.getElementById('joiningDate').value;
+            var salary = document.getElementById('salary').value;
+
+            // You can implement validation for date format and salary range as required
+
+            return true;
+        }
+    </script>
+</body>
+</html>

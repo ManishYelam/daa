@@ -1,0 +1,66 @@
+
+****************Slip-6   &    slip10************************************************************************
+
+Q.1) Create a Node.js file that will convert the output "rbnb college!" into Upper-case letters.      [10] 
+const str = "rbnb college!";
+const upperCaseStr = str.toUpperCase();
+console.log(upperCaseStr);
+
+Q.2) Create an HTML form for Employee and write a JavaScript to validate name, email ID, 
+mobile number, department, joining date. [15] 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration</title>
+</head>
+<body>
+    <h2>Employee Registration</h2>
+    <form onsubmit="return validateForm()">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="mobile">Mobile No.:</label><br>
+        <input type="text" id="mobile" name="mobile" maxlength="10" required><br><br>
+        <label for="department">Department:</label><br>
+        <input type="text" id="department" name="department" required><br><br>
+        <label for="joiningDate">Joining Date:</label><br>
+        <input type="date" id="joiningDate" name="joiningDate" required><br><br>
+        <input type="submit" value="Register">
+    </form>
+     <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var mobile = document.getElementById('mobile').value;
+            var department = document.getElementById('department').value;
+            var joiningDate = document.getElementById('joiningDate').value;
+
+            var nameRegex = /^[A-Za-z]+$/;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var mobileRegex = /^[0-9]{10}$/;
+            // You can add validation for department and joining date format as required
+
+            if (!nameRegex.test(name)) {
+                alert('Please enter a valid name');
+                return false;
+            }
+
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return false;
+            }
+
+            if (!mobileRegex.test(mobile)) {
+                alert('Please enter a valid 10-digit mobile number');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
+
