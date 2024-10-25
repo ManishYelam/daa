@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arduino Assignments Index</title>
+    <title>Python Programs for Data Science Tasks</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,28 +21,252 @@
             border-bottom: 2px solid #4CAF50;
             padding-bottom: 5px;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin: 10px 0;
-        }
-        a {
-            text-decoration: none;
-            color: #4CAF50;
-        }
-        a:hover {
-            text-decoration: underline;
+        pre {
+            background-color: #eaeaea;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
         }
     </style>
 </head>
 <body>
-    <h2>Available Assignments</h2>        
-    <ul>
-        <li><a href="sadp.html">Assignment Set 1</a></li>
-        <li><a href="iot.html">Assignment Set 2</a></li>
-        <li><a href="book.pdf" download>IOT_Design Lab-book Download</a></li>
-    </ul>
+    <h1>Python Programs for Data Science Tasks</h1>
+
+    <h2>1. Scatter Plot for Iris Dataset</h2>
+    <pre>
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load the iris dataset
+df = sns.load_dataset("iris")
+
+# Create the scatter plot
+sns.scatterplot(data=df, x='sepal_length', y='sepal_width', hue='species')
+plt.title('Scatter Plot of Iris Dataset')
+plt.show()
+    </pre>
+
+    <h2>2. Find and Remove Null Values</h2>
+    <pre>
+import pandas as pd
+
+# Sample dataset
+data = {'A': [1, 2, None], 'B': ['text', None, 'more text']}
+df = pd.DataFrame(data)
+
+# Remove null values
+df_cleaned = df.dropna()
+print(df_cleaned)
+    </pre>
+
+    <h2>3. Categorical to Numeric Conversion</h2>
+    <pre>
+import pandas as pd
+
+# Sample dataset
+data = {'Color': ['Red', 'Blue', 'Green'], 'Size': ['S', 'M', 'L']}
+df = pd.DataFrame(data)
+
+# One-hot encoding
+df_encoded = pd.get_dummies(df)
+print(df_encoded)
+    </pre>
+
+    <h2>4. Simple Linear Regression</h2>
+    <pre>
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+
+# Sample dataset
+data = {'SquareFootage': [1500, 1600, 1700], 'Price': [300000, 320000, 340000]}
+df = pd.DataFrame(data)
+
+# Train/test split
+X = df[['SquareFootage']]
+y = df['Price']
+X_train, X_test, y_train, y_test = train_test_split(X, y)
+
+# Train model
+model = LinearRegression().fit(X_train, y_train)
+
+# Plot results
+plt.scatter(X, y)
+plt.plot(X_test, model.predict(X_test), color='red')
+plt.title('House Price Prediction')
+plt.show()
+    </pre>
+
+    <h2>5. Multiple Linear Regression</h2>
+    <pre>
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+
+# Sample dataset
+data = {'Feature1': [1, 2, 3], 'Feature2': [4, 5, 6], 'Price': [10, 15, 20]}
+df = pd.DataFrame(data)
+
+# Train model
+X = df[['Feature1', 'Feature2']]
+y = df['Price']
+model = LinearRegression().fit(X, y)
+print("Coefficients:", model.coef_)
+    </pre>
+
+    <h2>6. Polynomial Linear Regression</h2>
+    <pre>
+import numpy as np
+import pandas as pd
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+
+# Sample dataset
+X = np.array([[1], [2], [3]])
+y = np.array([1, 4, 9])  # y = x^2
+
+# Polynomial regression
+poly = PolynomialFeatures(degree=2)
+X_poly = poly.fit_transform(X)
+model = LinearRegression().fit(X_poly, y)
+
+print("Coefficients:", model.coef_)
+    </pre>
+
+    <h2>7. Naive Bayes Classifier</h2>
+    <pre>
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+
+# Sample dataset
+data = {'Feature1': [1, 2, 1, 2], 'Label': [0, 1, 0, 1]}
+df = pd.DataFrame(data)
+
+# Train/test split
+X = df[['Feature1']]
+y = df['Label']
+X_train, X_test, y_train, y_test = train_test_split(X, y)
+
+# Train model
+model = GaussianNB().fit(X_train, y_train)
+print("Accuracy:", model.score(X_test, y_test))
+    </pre>
+
+    <h2>8. Decision Tree for Tennis Prediction</h2>
+    <pre>
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+
+# Sample dataset
+data = {
+    'Outlook': [0, 1, 2, 2, 1],  # 0: Sunny, 1: Overcast, 2: Rainy
+    'PlayTennis': [0, 0, 1, 1, 0]  # 0: No, 1: Yes
+}
+df = pd.DataFrame(data)
+
+# Features and target variable
+X = df[['Outlook']]
+y = df['PlayTennis']
+
+# Create and train the Decision Tree model
+model = DecisionTreeClassifier()
+model.fit(X, y)
+
+# Example prediction (using a DataFrame for input)
+input_data = pd.DataFrame([[1]], columns=['Outlook'])  # Predicting for Overcast
+prediction = model.predict(input_data)
+
+print("Prediction:", prediction[0])  # Print the predicted value
+    </pre>
+
+    <h2>9. Linear SVM</h2>
+    <pre>
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import datasets
+from sklearn.svm import SVC
+
+# Load dataset
+iris = datasets.load_iris()
+X = iris.data[:, :2]
+y = iris.target
+
+# Train model
+model = SVC(kernel='linear').fit(X, y)
+
+# Plotting decision boundary
+plt.scatter(X[:, 0], X[:, 1], c=y)
+plt.title('Linear SVM')
+plt.show()
+    </pre>
+
+    <h2>10. Scatter Plot for Iris Dataset (Duplicate)</h2>
+    <pre>
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load the iris dataset
+df = sns.load_dataset("iris")
+
+# Create the scatter plot
+sns.scatterplot(data=df, x='sepal_length', y='sepal_width', hue='species')
+plt.title('Scatter Plot of Iris Dataset')
+plt.show()
+    </pre>
+
+    <h2>11. Remove Null Values (Duplicate)</h2>
+    <pre>
+import pandas as pd
+
+# Sample dataset
+data = {'A': [1, 2, None], 'B': ['text', None, 'more text']}
+df = pd.DataFrame(data)
+
+# Remove null values
+df_cleaned = df.dropna()
+print(df_cleaned)
+    </pre>
+
+    <h2>12. Categorical Values to Numeric (Duplicate)</h2>
+    <pre>
+import pandas as pd
+
+# Sample dataset
+data = {'Color': ['Red', 'Blue', 'Green'], 'Size': ['S', 'M', 'L']}
+df = pd.DataFrame(data)
+
+# One-hot encoding
+df_encoded = pd.get_dummies(df)
+print(df_encoded)
+    </pre>
+
+    <h2>13. PCA and Logistic Regression on Iris Dataset</h2>
+    <pre>
+from sklearn.datasets import load_iris
+from sklearn.decomposition import PCA
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+
+# Load the Iris dataset
+iris = load_iris()
+X, y = iris.data, iris.target
+
+# Reduce dimensions from 4D to 2D using PCA
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X_pca, y, test_size=0.3, random_state=42)
+
+# Train a logistic regression model
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Make predictions and print accuracy
+y_pred = model.predict(X_test)
+print(f"Accuracy: {accuracy_score(y_test, y_pred) * 100:.2f}%")
+    </pre>
 </body>
-</html>    
+</html>
