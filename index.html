@@ -76,19 +76,21 @@ connection.end();
 const fs = require('fs');
 
 const htmlContent = `
-`<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>File Upload Form</title>
-</head>
-<body>
-  <form action="/upload" method="post" enctype="multipart/form-data">
-    <input type="file" name="file" />
-    <button type="submit">Upload</button>
-  </form>
-</body>
-</html>`
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;File Upload Form&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;form action="/upload" method="post" enctype="multipart/form-data"&gt;
+    &lt;input type="file" name="file" /&gt;
+    &lt;button type="submit"&gt;Upload&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
 `;
 
 fs.writeFileSync('form.html', htmlContent);
