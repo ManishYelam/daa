@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Programs for Data Science Tasks</title>
+    <title>Node.js Code Snippets</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,243 +30,170 @@
     </style>
 </head>
 <body>
-    <h1>Python Programs for Data Science Tasks</h1>
+    <h1>Node.js Code Snippets</h1>
 
-    <h2>1. Scatter Plot for Iris Dataset</h2>
+    <h2>1. Uppercase "HelloWorld"</h2>
     <pre>
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-# Load the iris dataset
-df = sns.load_dataset("iris")
-
-# Create the scatter plot
-sns.scatterplot(data=df, x='sepal_length', y='sepal_width', hue='species')
-plt.title('Scatter Plot of Iris Dataset')
-plt.show()
+// uppercase.js
+const originalText = "HelloWorld";
+const upperText = originalText.toUpperCase();
+console.log(upperText);
     </pre>
 
-    <h2>2. Find and Remove Null Values</h2>
+    <h2>2. Select All Records from "customer" Table and Delete a Specific Record</h2>
     <pre>
-import pandas as pd
+// customer.js
+const mysql = require('mysql2');
 
-# Sample dataset
-data = {'A': [1, 2, None], 'B': ['text', None, 'more text']}
-df = pd.DataFrame(data)
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'password',
+  database: 'your_database'
+});
 
-# Remove null values
-df_cleaned = df.dropna()
-print(df_cleaned)
+connection.connect();
+
+// Select all records
+connection.query('SELECT * FROM customer', (error, results) => {
+  if (error) throw error;
+  console.log(results);
+});
+
+// Delete specific record (replace 'id' with actual column and value)
+const customerId = 1; // Example ID
+connection.query('DELETE FROM customer WHERE id = ?', [customerId], (error) => {
+  if (error) throw error;
+  console.log(`Customer with ID ${customerId} deleted.`);
+});
+
+connection.end();
     </pre>
 
-    <h2>3. Categorical to Numeric Conversion</h2>
+    <h2>3. Write HTML Form with Upload Field</h2>
     <pre>
-import pandas as pd
+// form.js
+const fs = require('fs');
 
-# Sample dataset
-data = {'Color': ['Red', 'Blue', 'Green'], 'Size': ['S', 'M', 'L']}
-df = pd.DataFrame(data)
+const htmlContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>File Upload Form</title>
+</head>
+<body>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <button type="submit">Upload</button>
+  </form>
+</body>
+</html>
+`;
 
-# One-hot encoding
-df_encoded = pd.get_dummies(df)
-print(df_encoded)
+fs.writeFileSync('form.html', htmlContent);
+console.log("HTML form file created as 'form.html'.");
     </pre>
 
-    <h2>4. Simple Linear Regression</h2>
+    <h2>4. Serve Requested File Content or Return a 404 Error</h2>
     <pre>
-import pandas as pd
-import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-import matplotlib.pyplot as plt
+// fileServer.js
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
 
-# Sample dataset
-data = {'SquareFootage': [1500, 1600, 1700], 'Price': [300000, 320000, 340000]}
-df = pd.DataFrame(data)
+const server = http.createServer((req, res) => {
+  const filePath = path.join(__dirname, req.url);
 
-# Train/test split
-X = df[['SquareFootage']]
-y = df['Price']
-X_train, X_test, y_train, y_test = train_test_split(X, y)
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      return res.end('404 Not Found');
+    }
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end(data);
+  });
+});
 
-# Train model
-model = LinearRegression().fit(X_train, y_train)
-
-# Plot results
-plt.scatter(X, y)
-plt.plot(X_test, model.predict(X_test), color='red')
-plt.title('House Price Prediction')
-plt.show()
+server.listen(3000, () => {
+  console.log('Server running on http://localhost:3000');
+});
     </pre>
 
-    <h2>5. Multiple Linear Regression</h2>
+    <h2>5. Read Data from Multiple Files Asynchronously Using Promises and Async/Await</h2>
     <pre>
-import pandas as pd
-from sklearn.linear_model import LinearRegression
+// readFiles.js
+const fs = require('fs').promises;
 
-# Sample dataset
-data = {'Feature1': [1, 2, 3], 'Feature2': [4, 5, 6], 'Price': [10, 15, 20]}
-df = pd.DataFrame(data)
-
-# Train model
-X = df[['Feature1', 'Feature2']]
-y = df['Price']
-model = LinearRegression().fit(X, y)
-print("Coefficients:", model.coef_)
-    </pre>
-
-    <h2>6. Polynomial Linear Regression</h2>
-    <pre>
-import numpy as np
-import pandas as pd
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
-
-# Sample dataset
-X = np.array([[1], [2], [3]])
-y = np.array([1, 4, 9])  # y = x^2
-
-# Polynomial regression
-poly = PolynomialFeatures(degree=2)
-X_poly = poly.fit_transform(X)
-model = LinearRegression().fit(X_poly, y)
-
-print("Coefficients:", model.coef_)
-    </pre>
-
-    <h2>7. Naive Bayes Classifier</h2>
-    <pre>
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import GaussianNB
-
-# Sample dataset
-data = {'Feature1': [1, 2, 1, 2], 'Label': [0, 1, 0, 1]}
-df = pd.DataFrame(data)
-
-# Train/test split
-X = df[['Feature1']]
-y = df['Label']
-X_train, X_test, y_train, y_test = train_test_split(X, y)
-
-# Train model
-model = GaussianNB().fit(X_train, y_train)
-print("Accuracy:", model.score(X_test, y_test))
-    </pre>
-
-    <h2>8. Decision Tree for Tennis Prediction</h2>
-    <pre>
-import pandas as pd
-from sklearn.tree import DecisionTreeClassifier
-
-# Sample dataset
-data = {
-    'Outlook': [0, 1, 2, 2, 1],  # 0: Sunny, 1: Overcast, 2: Rainy
-    'PlayTennis': [0, 0, 1, 1, 0]  # 0: No, 1: Yes
+async function readFiles() {
+  try {
+    const file1 = await fs.readFile('file1.txt', 'utf8');
+    const file2 = await fs.readFile('file2.txt', 'utf8');
+    console.log(file1, file2);
+  } catch (err) {
+    console.error('Error reading files:', err);
+  }
 }
-df = pd.DataFrame(data)
 
-# Features and target variable
-X = df[['Outlook']]
-y = df['PlayTennis']
-
-# Create and train the Decision Tree model
-model = DecisionTreeClassifier()
-model.fit(X, y)
-
-# Example prediction (using a DataFrame for input)
-input_data = pd.DataFrame([[1]], columns=['Outlook'])  # Predicting for Overcast
-prediction = model.predict(input_data)
-
-print("Prediction:", prediction[0])  # Print the predicted value
+readFiles();
     </pre>
 
-    <h2>9. Linear SVM</h2>
+    <h2>6. Simple Server Handling Multiple Client Connections</h2>
     <pre>
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn import datasets
-from sklearn.svm import SVC
+// simpleServer.js
+const http = require('http');
 
-# Load dataset
-iris = datasets.load_iris()
-X = iris.data[:, :2]
-y = iris.target
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Hello, Client!\n');
+});
 
-# Train model
-model = SVC(kernel='linear').fit(X, y)
-
-# Plotting decision boundary
-plt.scatter(X[:, 0], X[:, 1], c=y)
-plt.title('Linear SVM')
-plt.show()
+server.listen(3000, () => {
+  console.log('Server listening on port 3000');
+});
     </pre>
 
-    <h2>10. Scatter Plot for Iris Dataset (Duplicate)</h2>
+    <h2>7. Insert Multiple Records into "student" Table and Display Result Object</h2>
     <pre>
-import seaborn as sns
-import matplotlib.pyplot as plt
+// insertStudent.js
+const mysql = require('mysql2');
 
-# Load the iris dataset
-df = sns.load_dataset("iris")
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'password',
+  database: 'your_database'
+});
 
-# Create the scatter plot
-sns.scatterplot(data=df, x='sepal_length', y='sepal_width', hue='species')
-plt.title('Scatter Plot of Iris Dataset')
-plt.show()
+connection.connect();
+
+const students = [
+  { name: 'Alice', age: 20 },
+  { name: 'Bob', age: 22 },
+  { name: 'Charlie', age: 21 }
+];
+
+const sql = 'INSERT INTO student (name, age) VALUES ?';
+const values = students.map(s => [s.name, s.age]);
+
+connection.query(sql, [values], (error, result) => {
+  if (error) throw error;
+  console.log(result);
+});
+
+connection.end();
     </pre>
 
-    <h2>11. Remove Null Values (Duplicate)</h2>
+    <h2>8. Minimal Node.js Server</h2>
     <pre>
-import pandas as pd
+// server.js
+const http = require('http');
 
-# Sample dataset
-data = {'A': [1, 2, None], 'B': ['text', None, 'more text']}
-df = pd.DataFrame(data)
-
-# Remove null values
-df_cleaned = df.dropna()
-print(df_cleaned)
-    </pre>
-
-    <h2>12. Categorical Values to Numeric (Duplicate)</h2>
-    <pre>
-import pandas as pd
-
-# Sample dataset
-data = {'Color': ['Red', 'Blue', 'Green'], 'Size': ['S', 'M', 'L']}
-df = pd.DataFrame(data)
-
-# One-hot encoding
-df_encoded = pd.get_dummies(df)
-print(df_encoded)
-    </pre>
-
-    <h2>13. PCA and Logistic Regression on Iris Dataset</h2>
-    <pre>
-from sklearn.datasets import load_iris
-from sklearn.decomposition import PCA
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-
-# Load the Iris dataset
-iris = load_iris()
-X, y = iris.data, iris.target
-
-# Reduce dimensions from 4D to 2D using PCA
-pca = PCA(n_components=2)
-X_pca = pca.fit_transform(X)
-
-# Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X_pca, y, test_size=0.3, random_state=42)
-
-# Train a logistic regression model
-model = LogisticRegression()
-model.fit(X_train, y_train)
-
-# Make predictions and print accuracy
-y_pred = model.predict(X_test)
-print(f"Accuracy: {accuracy_score(y_test, y_pred) * 100:.2f}%")
+http.createServer((req, res) => {
+  res.end('Hello World');
+}).listen(3000, () => {
+  console.log('Server running on http://localhost:3000');
+});
     </pre>
 </body>
 </html>
